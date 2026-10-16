@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>5-Day Python Automation Engine Sprint (Free)</title>
+  <meta name="description" content="A free 5-day email challenge. Build a modular Python automation engine with PostgreSQL and a secure web API, then deploy it to the cloud.">
+  <meta property="og:title" content="The 5-Day Python Automation Engine Sprint">
+  <meta property="og:description" content="Stop shipping fragile scripts. Build and deploy a production-grade automation engine in 5 days. Free.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { paper: '#F1F4F7', ink: '#0F1E2E', blue: '#1D3A8A', signal: '#FF6A1A', line: '#C9D3DD' },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+          body: ['"IBM Plex Sans"', 'system-ui', 'sans-serif']
+        }
+      } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    .grid-bg {
+      background-image: linear-gradient(#C9D3DD55 1px, transparent 1px), linear-gradient(90deg, #C9D3DD55 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .flow-dot { animation: travel 3.2s linear infinite; }
+    @keyframes travel { from { transform: translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .flow-dot { animation: none; opacity: 1; } }
+  </style>
+</head>
+<body class="bg-paper text-ink font-body antialiased">
+
+  <!-- HERO -->
+  <header class="grid-bg border-b border-line">
+    <div class="max-w-5xl mx-auto px-5 py-14 md:py-20 grid md:grid-cols-5 gap-10 items-start">
+      <div class="md:col-span-3">
+        <p class="text-sm font-semibold text-blue">Free 5-day email challenge for freelancers, developers and indie hackers</p>
+        <h1 class="font-display font-extrabold text-4xl md:text-6xl leading-[1.05] mt-4">
+          Build a Python automation engine that doesn't break at 2&nbsp;a.m.
+        </h1>
+        <p class="mt-5 text-lg text-ink/80 max-w-xl leading-relaxed">
+          In five short daily emails you'll replace your fragile single-file script with a modular engine that talks to PostgreSQL, takes triggers from a secure web API, and runs 24/7 in the cloud.
+        </p>
+
+        <!-- pipeline diagram -->
+        <div class="mt-8 flex items-center gap-2 text-sm font-semibold" aria-label="Pipeline: webhook to Python engine to PostgreSQL">
+          <span class="border-2 border-ink bg-white px-3 py-2 rounded">Webhook</span>
+          <span class="relative flex-1 h-0.5 bg-ink/30 overflow-hidden max-w-[80px]"><span class="flow-dot absolute left-0 -top-[3px] w-2 h-2 rounded-full bg-signal"></span></span>
+          <span class="border-2 border-blue bg-blue text-white px-3 py-2 rounded">Python engine</span>
+          <span class="relative flex-1 h-0.5 bg-ink/30 overflow-hidden max-w-[80px]"><span class="flow-dot absolute left-0 -top-[3px] w-2 h-2 rounded-full bg-signal" style="animation-delay:1.1s"></span></span>
+          <span class="border-2 border-ink bg-white px-3 py-2 rounded">PostgreSQL</span>
+        </div>
+      </div>
+
+      <!-- SIGNUP FORM (Netlify Forms) -->
+      <div class="md:col-span-2 bg-white border-2 border-ink rounded-lg p-6 shadow-[6px_6px_0_0_#0F1E2E]" id="join">
+        <h2 class="font-display font-extrabold text-2xl">Join the free sprint</h2>
+        <p class="text-sm text-ink/70 mt-1">Day 1 lands in your inbox right after you sign up.</p>
+
+        <form name="sprint-signup" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" class="mt-5 space-y-4">
+          <input type="hidden" name="form-name" value="sprint-signup">
+          <p class="hidden" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+          <div>
+            <label for="first_name" class="block text-sm font-semibold mb-1">First name</label>
+            <input id="first_name" name="first_name" type="text" required autocomplete="given-name"
+              class="w-full border-2 border-line rounded px-3 py-2.5 focus:outline-none focus:border-blue focus-visible:ring-2 focus-visible:ring-blue/40">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-semibold mb-1">Email address</label>
+            <input id="email" name="email" type="email" required autocomplete="email"
+              class="w-full border-2 border-line rounded px-3 py-2.5 focus:outline-none focus:border-blue focus-visible:ring-2 focus-visible:ring-blue/40">
+          </div>
+          <button type="submit"
+            class="w-full bg-signal text-ink font-display font-extrabold text-lg py-3 rounded border-2 border-ink hover:brightness-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue/40">
+            Start the sprint
+          </button>
+          <p class="text-xs text-ink/60">Free. One email a day for five days. Unsubscribe any time.</p>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- CURRICULUM -->
+  <main>
+    <section class="max-w-5xl mx-auto px-5 py-16" id="curriculum">
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl">One working piece of the engine each day</h2>
+      <p class="mt-3 text-ink/75 max-w-2xl">Each email is a 20-30 minute task with a download you can use straight away.</p>
+
+      <ol class="mt-10 border-l-2 border-ink ml-3 space-y-8">
+        <li class="pl-8 relative">
+          <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-ink text-white grid place-items-center text-sm font-bold">1</span>
+          <h3 class="font-display font-extrabold text-xl">Map the pipeline before you code</h3>
+          <p class="text-ink/75 mt-1 max-w-xl">Plan inputs, transitions, outputs and failure states. You get a free Trello roadmap template.</p>
+        </li>
+        <li class="pl-8 relative">
+          <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-ink text-white grid place-items-center text-sm font-bold">2</span>
+          <h3 class="font-display font-extrabold text-xl">Set up a fast PostgreSQL data layer</h3>
+          <p class="text-ink/75 mt-1 max-w-xl">A production-ready schema script with the right indexes, so queries stay quick as data grows.</p>
+        </li>
+        <li class="pl-8 relative">
+          <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-ink text-white grid place-items-center text-sm font-bold">3</span>
+          <h3 class="font-display font-extrabold text-xl">Write the core Python engine</h3>
+          <p class="text-ink/75 mt-1 max-w-xl">A modular skeleton with <code class="bg-white border border-line rounded px-1">.env</code> secrets, explicit error handling, logging and automatic data formatting.</p>
+        </li>
+        <li class="pl-8 relative">
+          <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-ink text-white grid place-items-center text-sm font-bold">4</span>
+          <h3 class="font-display font-extrabold text-xl">Open a secure web API</h3>
+          <p class="text-ink/75 mt-1 max-w-xl">A lightweight backend boilerplate so webhooks and other apps can safely trigger your engine.</p>
+        </li>
+        <li class="pl-8 relative">
+          <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-signal text-ink grid place-items-center text-sm font-bold border-2 border-ink">5</span>
+          <h3 class="font-display font-extrabold text-xl">Deploy it to the cloud on Render</h3>
+          <p class="text-ink/75 mt-1 max-w-xl">A step-by-step deployment framework, so your engine runs 24/7 without your laptop.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- WHO IT'S FOR + FINAL CTA -->
+    <section class="bg-ink text-white">
+      <div class="max-w-5xl mx-auto px-5 py-14 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="font-display font-extrabold text-3xl">Built for people who ship</h2>
+          <p class="mt-3 text-white/80 leading-relaxed max-w-md">
+            If you're a freelancer automating client workflows, a full-stack developer adding background jobs, or an indie hacker running data pipelines, this skips weeks of foundational setup. You'll need basic Python and a free Render account.
+          </p>
+        </div>
+        <div class="md:text-right">
+          <a href="#join" class="inline-block bg-signal text-ink font-display font-extrabold text-lg px-8 py-4 rounded border-2 border-white hover:brightness-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/60">
+            Get Day 1 free
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-5 py-8 text-sm text-ink/60 flex flex-wrap gap-x-6 gap-y-2 justify-between">
+    <span>&copy; <span id="yr">2026</span> Garikai Munamato Mangobe </span>
+    <span><a class="underline" href="/privacy.html">Privacy</a></span>
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
